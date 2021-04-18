@@ -29,9 +29,12 @@ class Home extends CI_Controller
             $data['user'] = 'Pengunjung';
             $this->load->view('templates/templates-user/header', $data);
             $this->load->view('buku/daftarbuku', $data);
+            //step 3 awal
             $this->load->view('templates/templates-user/modal');
+            //step 3 akhir
             $this->load->view('templates/templates-user/footer', $data);
         }
+
     }
 
     public function detailBuku()
