@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Pustaka-Booking | <?= $judul; ?></title>
@@ -14,7 +14,7 @@
 
     <link href="<?= base_url('assets/'); ?>vendor/fontawesomefree/css/all.min.css" rel="stylesheet" type="text/css">
     <!-- <link href="<?= base_url('assets/'); ?>datatable/datatables.css" rel="stylesheet" type="text/css"> -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.css" />
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.js"></script>
 </head>
 
@@ -29,7 +29,16 @@
                 <div class="navbar-nav">
                     <a class="nav-item navlink active" href="<?= base_url(); ?>">Beranda <span class="sronly">(current)</span></a>
                     <?php
-                    if (!empty($this->session->userdata('email'))) { ?>                        
+                    if (!empty($this->session->userdata('email'))) { ?>
+                        
+                        <a class="nav-item navlink" href="<?= base_url('booking'); ?>">Booking
+                            <b>
+                                <?=
+                                    $this->ModelBooking->getDataWhere('temp', ['email_user' => $this->session->userdata('email')])->num_rows();
+                                ?>
+                            </b>
+                        </a>
+
                         <a class="nav-item navlink" href="<?= base_url('member/myprofil'); ?>">Profil Saya</a>
                         <a class="nav-item navlink" href="<?= base_url('member/logout'); ?>"><i class="fas fw falogin"></i> Log out</a>
                     <?php } else { ?>
